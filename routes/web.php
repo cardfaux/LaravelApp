@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//   return view('home');
-// });
-Route::view('/', 'home');
-
-// Route::get('/contact', function () {
-//   return view('contact');
-// });
-Route::view('/contact', 'contact');
+Route::get('/', 'HomeController@home')->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::resource('/posts', 'PostController')->only(['index', 'show']);
