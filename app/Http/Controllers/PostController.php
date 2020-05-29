@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        dd(BlogPost::all());
+        return view('posts.index', ['posts' => BlogPost::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,7 +35,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        dd($title, $content);
     }
 
     /**
@@ -46,7 +49,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        dd(BlogPost::find($id));
+        return view('posts.show', ['post' => BlogPost::findorFail($id)]);
     }
 
     /**
